@@ -18,13 +18,25 @@ import org.springframework.stereotype.Service;
 import com.udemy.entity.UserRole;
 import com.udemy.repository.UserRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserService.
+ */
 @Service("userService")
 public class UserService implements UserDetailsService{
 
+	/** The user repository. */
 	@Autowired
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
 	
+	/**
+	 * Load user by username.
+	 *
+	 * @param username the username
+	 * @return the user details
+	 * @throws UsernameNotFoundException the username not found exception
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -33,11 +45,24 @@ public class UserService implements UserDetailsService{
 		return buildUser(user,authorities);
 	}
 	
+	/**
+	 * Builds the user.
+	 *
+	 * @param user the user
+	 * @param authorities the authorities
+	 * @return the user
+	 */
 	private User buildUser(com.udemy.entity.User user, List<GrantedAuthority> authorities){
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
 	}
 	
 
+	/**
+	 * Builds the authorities.
+	 *
+	 * @param userRoles the user roles
+	 * @return the list
+	 */
 	private List<GrantedAuthority> buildAuthorities(Set<UserRole> userRoles){
 		Set<GrantedAuthority> auths = new HashSet<GrantedAuthority>();
 		
