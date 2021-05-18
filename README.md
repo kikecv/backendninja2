@@ -1,3 +1,5 @@
 ## backendninja2
 * Curso backendninja
-* Creado por el increible Platzi Team
+* Curso de Udemy
+* Ejemplos de springboot
+* Para principiantes en Springboot
